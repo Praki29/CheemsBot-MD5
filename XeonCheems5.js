@@ -243,12 +243,6 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
 function pickRandom(list) {
 return list[Math.floor(list.length * Math.random())]
 }
-//auto react all message
-XeonBotInc.sendMessage(m.chat, {
-          react: {
-            text: `${pickRandom(['ðŸ˜¨','ðŸ˜…','ðŸ˜‚','ðŸ˜³','ðŸ˜Ž', 'ðŸ¥µ', 'ðŸ˜±', 'ðŸ¦', 'ðŸ™„', 'ðŸ¤','ðŸ—¿','ðŸ¦','ðŸ¤¨','ðŸ¥´','ðŸ˜','ðŸ‘†','ðŸ˜”', 'ðŸ‘€','ðŸ‘Ž'])}`,
-            key: m.key,
-          }})
           
 //chat counter
         if (m.message) {
@@ -286,37 +280,9 @@ jumlahharian = `${dataa.value}`
 	    }
 	}
 	
-  //auto recording all
-    if (global.autoRecord) { if (m.chat) { XeonBotInc.sendPresenceUpdate('recording', m.chat) }
-}
 //autotyper all
   if (global.autoTyping) { if (m.chat) { XeonBotInc.sendPresenceUpdate('composing', m.chat) }
 }
-
-// Autosticker gc
-        if (isAutoSticker) {
-            if (/image/.test(mime) && !/webp/.test(mime)) {
-                let mediac = await quoted.download()
-                await XeonBotInc.sendImageAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
-                console.log(`Auto sticker detected`)
-            } else if (/video/.test(mime)) {
-                if ((quoted.msg || quoted).seconds > 11) return
-                let mediac = await quoted.download()
-                await XeonBotInc.sendVideoAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
-            }
-        }
-        //Autosticker pc
-                if (isAutoStick) {
-            if (/image/.test(mime) && !/webp/.test(mime)) {
-                let mediac = await quoted.download()
-                await XeonBotInc.sendImageAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
-                console.log(`Auto sticker detected`)
-            } else if (/video/.test(mime)) {
-                if ((quoted.msg || quoted).seconds > 11) return
-                let mediac = await quoted.download()
-                await XeonBotInc.sendVideoAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
-            }
-        }
 
 //anti bad words by xeon
 if (antiToxic)
